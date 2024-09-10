@@ -1,0 +1,27 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+HIDE_STEREOTYPE()
+LAYOUT_LEFT_RIGHT()
+Person(cliente, "Cliente", "Cliente da loja virtual")
+Person(prd, "Produtor")
+Person(gestor1, "Gestor Centro de distribuição")
+Person(admin, "Administrador da plataforma")
+
+
+System_Boundary(c9, "agronet") {
+    System(loja, "Loja Virtual", "Sostema web para compra dos alimentos oferecidos")
+    System(cd, "Centro de distribuicao", "Plataforma de gestao de pedidos, entregas e estoque")
+    System(pp, "Plataforma do produtor", "Plataforma de cadastro do catalogo de produtos ofertados pelo produtor e gestao de vendas e pagamentos")
+    System(pa, "Plataforma de administração", "Plataforma de gestão geral do agronet")
+}
+cliente --> loja: "Realiza pedidos"
+loja --> cd: "Consulta produtos e encaminha os pedidos"
+cd --> pp: "Realiza pedidos de reposição de estoque e atualiza os saldos a receber pelos produtores"
+pa --> cd: "Faz acesso"
+pa --> pp: "Faz acesso"
+prd --> pp: "Cadastra produtos e visualiza informacoes financeiras"
+gestor1 --> cd: "Valida pedidos e entregas"
+admin --> pa: "Faz acesso"
+
+@enduml
+
