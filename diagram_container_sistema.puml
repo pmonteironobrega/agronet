@@ -6,10 +6,11 @@ Person(cliente, "Cliente", "Cliente da loja virtual")
 Person(prd, "Produtor")
 Person(gestor1, "Gestor Centro de distribuição")
 Person(admin, "Administrador da plataforma")
+Person(entregador, "Entregador")
 
 
 System_Boundary(c9, "agronet") {
-    System(loja, "Loja Virtual", "Sostema web para compra dos alimentos oferecidos")
+    System(loja, "Loja Virtual", "Sistema web para compra dos alimentos oferecidos")
     System(cd, "Centro de distribuicao", "Plataforma de gestao de pedidos, entregas e estoque")
     System(pp, "Plataforma do produtor", "Plataforma de cadastro do catalogo de produtos ofertados pelo produtor e gestao de vendas e pagamentos")
     System(pa, "Plataforma de administração", "Plataforma de gestão geral do agronet")
@@ -22,6 +23,6 @@ pa --> pp: "Faz acesso"
 prd --> pp: "Cadastra produtos e visualiza informacoes financeiras"
 gestor1 --> cd: "Valida pedidos e entregas"
 admin --> pa: "Faz acesso"
-
+entregador --> cd: "Recebe os pedidos para entregar ao cliente"
 @enduml
 
